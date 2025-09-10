@@ -1,15 +1,9 @@
 from fastapi import FastAPI,HTTPException,status,Query
 from typing import Optional
 
+from core.list_user import list_user
+
 app=FastAPI()
-#list of user
-list_user = [
-    {'id':0,'name':'koorosh','age':27},
-    {'id':1,'name':'kirash','age':17},
-    {'id':2,'name':'bahram','age':52},
-    {'id':3,'name':'shayan','age':26},
-    {'id':4,'name':'farhan','age':27},
-]
 #example of route
 @app.get("/")
 def root():
