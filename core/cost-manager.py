@@ -1,8 +1,17 @@
 from fastapi import FastAPI,HTTPException,Query,status,Body
 from typing import Optional
 import random
+from contextlib import asynccontextmanager
 
-app=FastAPI()
+@asynccontextmanager
+async def lifespan(app: FastAPI):  # اضافه کردن async
+    print("Starting application...")  # قبل از yield
+    yield  # اینجا برنامه اجرا می‌شود
+    print("Closing application...")   # بعد از yield
+
+app = FastAPI(lifespan=lifespan)  
+
+app=FastAPI(lifespan=lifespan)
 cost_list=[
     {'id':0,'description':'description','amount':0},
     {'id':1,'description':'description1','amount':1},
