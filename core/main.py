@@ -1,6 +1,6 @@
 from fastapi import FastAPI,HTTPException,status,Query
 from typing import Optional
-
+import schema
 app=FastAPI()
 #list of user
 list_user = [
